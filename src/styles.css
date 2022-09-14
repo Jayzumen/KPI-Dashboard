@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Custom Fonts */
+
+@font-face {
+    font-family: "Poppins-Bold";
+    src: url("assets/fonts/Poppins/Poppins-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Poppins-ExtraBold";
+    src: url("assets/fonts/Poppins/Poppins-ExtraBold.ttf");
+}
+
+@font-face {
+    font-family: "Poppins-Light";
+    src: url("assets/fonts/Poppins/Poppins-Light.ttf");
+}
+
+/* Custom Fonts */
