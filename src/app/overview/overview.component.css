@@ -1,81 +1,108 @@
-main {
-    display: flex;
-    gap: 25px;
+.main {
+  display: flex;
+  gap: 30px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
 }
 
-/* Left container */
-.container-left {
-    background-color: #fff;
-    padding: 20px;
-    width: 400px;
-    border-radius: 20px;
+/* Headlines */
+.name {
+  font-size: 30px;
+  font-family: var(--bold);
+  color: var(--text-color);
 }
 
-.main-heading {
-    font-size: 22px;
+/* Numbers */
+.val {
+  font-size: 30px;
+  font-family: var(--bold);
 }
 
-.heading {
-    color: #1aa5ad;
-    font-family: "Poppins-Bold";
-    font-size: 20px;
+.main-val {
+  font-size: 42px;
 }
 
-.main-value {
-    font-size: 28px;
+.value-div {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 180px;
+  margin: 10px 0;
+  height: 40px;
+  align-items: center;
+  font-family: var(--bold);
 }
 
-.value {
-    font-family: "Poppins-Bold";
-    font-size: 22px;
-}
-
-
+/* change value */
 .change {
-    background-color: lightgreen;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    border-radius: 20px;
-    width: fit-content;
-    align-items: center;
+  background-color: var(--lightGreen);
+  color: var(--green);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 14px;
 }
 
-.change-value {
-    margin: 2px;
-    color: darkgreen;
-    font-family: "Poppins-Bold";
+.last-change {
+  margin-right: 130px;
 }
 
-.date-picker {
-    display: flex;
-    margin-top: 15px;
-    margin-bottom: 100px;
+/* left side */
+.left {
+  height: 100%;
+}
+.container-left {
+  background-color: var(--white);
+  border-radius: 25px;
+  padding: 25px 20px;
+  width: 500px;
 }
 
-label {
-    font-family: "Poppins-Light";
-    font-size: 13px;
-    color: gray;
+.date-container {
+  margin-bottom: 100px;
+  margin-top: 20px;
+  display: flex;
+  gap: 60px;
 }
 
-input {
-    padding: 5px;
-    border-radius: 5px;
-    color: #1aa5ad;
-}
-/* Left Container */
-
-/* Right Container */
-
-.container-right {
-    width: 400px;
+.date-container label {
+  color: grey;
+  font-family: var(--light);
 }
 
+.date-container input {
+  display: block;
+  margin-top: 10px;
+  color: var(--text-color);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+}
+
+.date-container input:active {
+  border: 1px solid var(--text-color);
+}
+
+.date-container input::-webkit-calendar-picker-indicator {
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+/* left side */
+
+/* right side */
+
+.right {
+  height: 100%;
+}
 .sub-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 20px;
+  background-color: var(--white);
+  border-radius: 25px;
+  padding: 15px 20px;
+  width: 500px;
 }
-/* Right Container */
+
+.sub-middle {
+  margin: 30px 0;
+}
+/* right side */

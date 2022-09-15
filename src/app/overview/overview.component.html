@@ -1,50 +1,61 @@
-<main>
+<div class="main">
+  <!-- Left Side -->
+  <div class="left">
     <div class="container-left">
-        <div class="total">
-            <p class="heading main-heading">Gesamtanzahl der Verkäufe</p>
-            <p class="value main-value">1.000.000</p>
-            <div class="change">
-                <p class="change-value">+ 20</p>
-            </div>
-        </div>    
+      <div class="total">
+        <p class="name">Gesamtanzahl der Verkäufe</p>
+        <div class="value-div">
+          <p class="val main-val">1.233.345</p>
+          <div class="change">+ 20</div>
+        </div>
+      </div>
 
-        <div class="provision">
-            <p class="heading">Provision</p>
-            <p class="value">2.500,55€</p>
-            <div class="change">
-                <p class="change-value">+ 72,49€</p>
-            </div>
+      <div class="provision">
+        <p class="name">Provision</p>
+        <div class="value-div">
+          <p class="val">2.544,32€</p>
+          <div class="change">+ 72,49€</div>
+        </div>
+      </div>
+
+      <div class="date-container">
+        <div class="date-left">
+          <label for="start">Von:</label>
+          <input
+            type="month"
+            name="start"
+            value="2021-09"
+            min="2019-01"
+            pattern="[A-z]{3}-[0-9]{4}"
+          />
         </div>
 
-        <div class="date-picker">
-            <div>
-                <label for="firstDate">Von:</label>
-                <input type="date" name="firstDate">
-            </div>
-            
-            <div>
-                <label for="secondDate">Bis:</label>
-                <input type="date" name="secondDate">
-            </div>
-            
+        <div class="date-right">
+          <label for="end">Bis:</label>
+          <input type="month" name="end" value="2022-09" min="2019-01" />
         </div>
+      </div>
     </div>
+  </div>
 
+  <!-- right side -->
+  <div class="right">
     <div class="container-right">
-        <div class="sub-container">
-            <p class="heading">Händler Anzahl</p>
-            <p class="value">90</p>
+      <div class="sub-container">
+        <p class="name">Händler Anzahl</p>
+        <p class="val">90</p>
+      </div>
+      <div class="sub-container sub-middle">
+        <p class="name">Produkte im Katalog</p>
+        <p class="val">473.876</p>
+      </div>
+      <div class="sub-container">
+        <p class="name">Accounts</p>
+        <div class="value-div">
+          <p class="val">2.344</p>
+          <div class="change last-change">+ 1</div>
         </div>
-        <div class="sub-container">
-            <p class="heading">Produkte im Katalog</p>
-            <p class="value">470.000</p>
-        </div>
-        <div class="sub-container">
-            <p class="heading">Accounts</p>
-            <p class="value">2300</p>
-            <div class="change">
-                <p class="change-value">+ 1</p>
-            </div>
-        </div>
+      </div>
     </div>
-</main>
+  </div>
+</div>
