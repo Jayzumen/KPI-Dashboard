@@ -7,11 +7,43 @@
   left: 50%;
 }
 
+/* Media Queries */
+@media (max-width: 1200px) {
+  .main {
+    flex-direction: column;
+    top: 60%;
+  }
+  .container-left {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 450px) {
+  .main {
+    margin: 0 auto;
+    top: 50%;
+  }
+  .left {
+    transform: scale(0.8);
+  }
+  .container-left {
+    transform: scale(0.8);
+    margin-bottom: 0;
+  }
+  .right {
+    transform: scale(0.8);
+  }
+  .container-right {
+    transform: scale(0.8);
+  }
+}
+/* Media Queries */
+
 /* Headlines */
 .name {
   font-size: 30px;
   font-family: var(--bold);
-  color: var(--text-color);
+  color: var(--textColor);
 }
 
 /* Numbers */
@@ -73,18 +105,18 @@
 .date-container input {
   display: block;
   margin-top: 10px;
-  color: var(--text-color);
+  color: var(--textColor);
   padding: 10px;
   border-radius: 10px;
   border: 1px solid lightgray;
 }
 
 .date-container input:active {
-  border: 1px solid var(--text-color);
+  border: 1px solid var(--textColor);
 }
 
 .date-container input::-webkit-calendar-picker-indicator {
-  color: var(--text-color);
+  color: var(--textColor);
   cursor: pointer;
 }
 

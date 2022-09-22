@@ -1,4 +1,4 @@
-#container {
+.container {
   background-image: url(../assets/bg.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -7,4 +7,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    height: 120vh;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    height: 120vh;
+    width: 120vw;
+  }
 }
