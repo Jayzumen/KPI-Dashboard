@@ -9,8 +9,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  static accesToken =
-    'wIaJmwGxqP8h5m5SiBa2ymYln97qJlLpnq73VDQ9c6eUYNzWFOg6YCMI';
+  static accesToken = '';
 
   constructor() {}
 
