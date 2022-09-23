@@ -4,20 +4,17 @@
   background-size: cover;
   height: 100%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 @media (max-width: 1200px) {
   .container {
-    height: 120vh;
+    height: 140vh;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 550px) {
   .container {
     height: 120vh;
-    width: 120vw;
+    width: 100vw;
   }
 }
