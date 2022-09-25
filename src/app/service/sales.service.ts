@@ -3,6 +3,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Sales } from './../interface/sales';
 
+
 @Injectable({
   providedIn: 'root'
 })

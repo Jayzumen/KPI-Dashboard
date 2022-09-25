@@ -46,7 +46,7 @@
       <div class="sub-container">
         <p class="name">Accounts</p>
         <div class="value-div">
-          <p class="val">2.344</p>
+          <p *ngIf="accounts" class="val">{{accounts.total}}</p>
           <div class="change last-change">+ 1</div>
         </div>
       </div>
