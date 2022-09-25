@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {map} from "rxjs/operators"
-import { LoginData, UserInfo } from '../interface/user-info';
+import { LoginData } from '../interface/user-info';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+
 
   constructor(private http: HttpClient) {}
 
@@ -17,7 +18,7 @@ export class LoginService {
         email: "jan-niklas@reinhardt.de",
         password: "alocalo2022!"
       }
-      }).pipe(map(this.getToken))
+      }).pipe(map(this.getToken)) 
     }
 
   private getToken(response: LoginData): LoginData {
@@ -26,6 +27,8 @@ export class LoginService {
       userInfo: {...response.userInfo}
       }
     }
+
+
 }
     
 

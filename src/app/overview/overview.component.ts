@@ -12,8 +12,14 @@ import { Accounts } from '../interface/accounts';
 })
 export class OverviewComponent implements OnInit {
 
-  tokens!: LoginData;
+  
+  loginData!: LoginData;
   accounts!: Accounts;
+
+
+  // My Bearer Token
+  public myToken: string = "";
+  // 
 
   constructor(
     private loginService: LoginService,
@@ -22,7 +28,6 @@ export class OverviewComponent implements OnInit {
 
 
   ngOnInit(): void {
-    
     this.getLoginToken()
     this.getNumberOfAccounts()
     // this.getListofSales()
@@ -31,8 +36,9 @@ export class OverviewComponent implements OnInit {
   getLoginToken(): void {
     this.loginService.logIn().subscribe(
       (results: LoginData) => {
-        console.log(results);
-        this.tokens = results
+        // console.log(results);
+        this.loginData = results;
+        this.myToken = this.loginData.userInfo.token;
       }
     )
   }
@@ -45,6 +51,10 @@ export class OverviewComponent implements OnInit {
         }
       )
     }
+
+    // getMerchants(): void {
+    //   this.
+    // }
 
 
   // getListofSales(): void {

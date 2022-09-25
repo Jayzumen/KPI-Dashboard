@@ -1,10 +1,14 @@
 export interface LoginData {
     status: string
-    userInfo: UserInfo
+    userInfo: {
+        refreshToken: string
+        token: string
+        tokenExpirationInstant: string
+    }
 }
 
-export interface UserInfo {
-    refreshToken: string
-    token: string
-    tokenExpirationInstant: string
-}
+// export interface UserInfo {
+//     refreshToken: string
+//     token: string
+//     tokenExpirationInstant: string
+// }
