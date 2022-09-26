@@ -8,4 +8,5 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class AppComponent {
   constructor() {}
+  title="KPI-Dashboard"
 }

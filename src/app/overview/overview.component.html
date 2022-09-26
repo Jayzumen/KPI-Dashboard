@@ -37,7 +37,7 @@
     <div class="container-right">
       <div class="sub-container">
         <p class="name">Händler Anzahl</p>
-        <p class="val">90</p>
+        <p *ngIf="totalMerchants" class="val">{{totalMerchants.merchants.totalElements}}</p>
       </div>
       <div class="sub-container sub-middle">
         <p class="name">Produkte im Katalog</p>

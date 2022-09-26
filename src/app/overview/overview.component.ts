@@ -4,6 +4,8 @@ import { AccountsService } from './../service/accounts.service';
 import { SalesService } from './../service/sales.service';
 import { LoginData } from './../interface/user-info';
 import { Accounts } from '../interface/accounts';
+import { Body, Merchants} from './../interface/merchants';
+import { MerchantsService } from './../service/merchants.service';
 
 @Component({
   selector: 'app-overview',
@@ -12,9 +14,14 @@ import { Accounts } from '../interface/accounts';
 })
 export class OverviewComponent implements OnInit {
 
+  private merchant: any = {
+    "type": "QUERY",
+    "query": ""
+  }
   
   loginData!: LoginData;
   accounts!: Accounts;
+  totalMerchants!: Merchants;
 
 
   // My Bearer Token
@@ -24,13 +31,16 @@ export class OverviewComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private accountService: AccountsService,
-    private salesService: SalesService ) {}
+    private salesService: SalesService,
+    private merchantsService: MerchantsService
+     ) {}
 
 
   ngOnInit(): void {
     this.getLoginToken()
     this.getNumberOfAccounts()
     // this.getListofSales()
+    this.onGetMerchants()
   }
 
   getLoginToken(): void {
@@ -52,9 +62,14 @@ export class OverviewComponent implements OnInit {
       )
     }
 
-    // getMerchants(): void {
-    //   this.
-    // }
+    onGetMerchants(): void {
+      this.merchantsService.getMerchants(this.merchant).subscribe(
+        (response: Merchants) => {
+          console.log(response);
+          this.totalMerchants = response;
+        }
+      )
+    }
 
 
   // getListofSales(): void {
