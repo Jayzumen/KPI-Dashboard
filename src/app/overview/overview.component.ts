@@ -4,8 +4,11 @@ import { AccountsService } from './../service/accounts.service';
 import { SalesService } from './../service/sales.service';
 import { LoginData } from './../interface/user-info';
 import { Accounts } from '../interface/accounts';
-import { Body, Merchants} from './../interface/merchants';
+import { Merchants} from './../interface/merchants';
+import { Products} from './../interface/products';
 import { MerchantsService } from './../service/merchants.service';
+import { ProductsService } from './../service/products.service';
+import { Sales } from './../interface/sales';
 
 @Component({
   selector: 'app-overview',
@@ -14,7 +17,7 @@ import { MerchantsService } from './../service/merchants.service';
 })
 export class OverviewComponent implements OnInit {
 
-  private merchant: any = {
+  private body: any = {
     "type": "QUERY",
     "query": ""
   }
@@ -22,32 +25,42 @@ export class OverviewComponent implements OnInit {
   loginData!: LoginData;
   accounts!: Accounts;
   totalMerchants!: Merchants;
+  totalProducts!: any;
 
 
-  // My Bearer Token
-  public myToken: string = "";
-  // 
+  
 
   constructor(
     private loginService: LoginService,
     private accountService: AccountsService,
+    private merchantsService: MerchantsService,
+    private productsService: ProductsService,
     private salesService: SalesService,
-    private merchantsService: MerchantsService
-     ) {}
+     ) {
+      // this.salesService.bearerToken = this.myToken
+     }
+
+
+    // My Bearer Token
+    public myToken: string = "";
+    // 
 
 
   ngOnInit(): void {
     this.getLoginToken()
     this.getNumberOfAccounts()
-    // this.getListofSales()
-    this.onGetMerchants()
+    // this.onGetMerchants()
+    // this.onGetProducts()
+    // async () => {
+      this.getListofSales()
+    // } 
   }
 
   getLoginToken(): void {
     this.loginService.logIn().subscribe(
-      (results: LoginData) => {
-        // console.log(results);
-        this.loginData = results;
+      (response: LoginData) => {
+        console.log(response);
+        this.loginData = response;
         this.myToken = this.loginData.userInfo.token;
       }
     )
@@ -55,29 +68,40 @@ export class OverviewComponent implements OnInit {
 
     getNumberOfAccounts(): void {
       this.accountService.getAccounts().subscribe(
-        (result: Accounts) => {
-          // console.log(result);
-          this.accounts = result
+        (response: Accounts) => {
+          // console.log(response);
+          this.accounts = response
         }
       )
     }
 
     onGetMerchants(): void {
-      this.merchantsService.getMerchants(this.merchant).subscribe(
+      this.merchantsService.getMerchants(this.body).subscribe(
         (response: Merchants) => {
-          console.log(response);
+          // console.log(response);
           this.totalMerchants = response;
         }
       )
     }
 
+    onGetProducts(): void {
+      this.productsService.getProducts(this.body).subscribe(
+        (response: any) => {
+          console.log(response);
+          // this.totalProducts = response;
+        }
+      )
+    }
 
-  // getListofSales(): void {
-  //   this.salesService.getSales().subscribe(
-  //     (res) => console.log(res),
-  //     (error) => console.log(error),
-  //   )
-  // }
+
+    getListofSales(): void {
+      this.salesService.getSales().subscribe(
+        (response: Sales) => {
+          console.log(response);
+          // console.log(this.salesService.bearerToken)
+        }
+      )
+    }
 
 } 
 

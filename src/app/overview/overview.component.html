@@ -29,6 +29,7 @@
           <input type="month" name="end" value="2022-09" min="2019-01" />
         </div>
       </div>
+      
     </div>
   </div>
 
@@ -41,7 +42,7 @@
       </div>
       <div class="sub-container sub-middle">
         <p class="name">Produkte im Katalog</p>
-        <p class="val">473.876</p>
+        <p *ngIf="totalProducts" class="val">{{totalProducts.products.totalElements}}</p>
       </div>
       <div class="sub-container">
         <p class="name">Accounts</p>

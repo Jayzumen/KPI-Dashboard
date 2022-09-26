@@ -1,5 +1,5 @@
-export interface Merchants {
-    merchants: {
+export interface Products {
+    products: {
         content: any[]
         numberOfElements: number
         totalElements: number
