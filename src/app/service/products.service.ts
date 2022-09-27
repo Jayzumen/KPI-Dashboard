@@ -9,7 +9,7 @@ import { Products } from './../interface/products';
 export class ProductsService {
   constructor(private http: HttpClient) { }
 
-  getProducts(body: any): Observable<any> {
-    return this.http.post<any>("https://dev.alocalo.de/product-service/find/products", body)
+  getProducts(body: any): Observable<Products> {
+    return this.http.post<Products>("https://dev.alocalo.de/product-service/find/products", body)
   }
 }

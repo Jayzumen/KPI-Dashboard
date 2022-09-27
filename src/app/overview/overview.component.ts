@@ -17,55 +17,73 @@ import { Sales } from './../interface/sales';
 })
 export class OverviewComponent implements OnInit {
 
+  loginData!: LoginData;
+  accounts!: Accounts;
+  totalMerchants!: Merchants;
+  totalProducts!: Products;
+
+  today!: string;
+
   private body: any = {
     "type": "QUERY",
     "query": ""
   }
+
+  private time: any = {
+    "beginMonth": "2022-01-01",
+    "endMonth": "2022-02-02"
+  }
+
+  // My Bearer Token
+   bearerToken: any = {};
+  // 
   
-  loginData!: LoginData;
-  accounts!: Accounts;
-  totalMerchants!: Merchants;
-  totalProducts!: any;
-
-
-  
-
+ 
   constructor(
     private loginService: LoginService,
     private accountService: AccountsService,
     private merchantsService: MerchantsService,
     private productsService: ProductsService,
     private salesService: SalesService,
-     ) {
-      // this.salesService.bearerToken = this.myToken
-     }
+     ) {}
 
 
-    // My Bearer Token
-    public myToken: string = "";
-    // 
+    
 
 
   ngOnInit(): void {
     this.getLoginToken()
+    this.getTime()
     this.getNumberOfAccounts()
-    // this.onGetMerchants()
+    this.onGetMerchants()
     // this.onGetProducts()
-    // async () => {
+    setTimeout(()=> {
       this.getListofSales()
-    // } 
+    }, 1000)
+    
   }
 
+  // get present time
+  getTime(): void {
+    this.today = new Date().toISOString().split('T')[0];
+  }
+
+
+  // Login to server and get Token
   getLoginToken(): void {
     this.loginService.logIn().subscribe(
       (response: LoginData) => {
-        console.log(response);
+        // console.log(response);
         this.loginData = response;
-        this.myToken = this.loginData.userInfo.token;
+        this.bearerToken = {
+          "Authorization": `Bearer ${this.loginData.userInfo.token}`
+        }
+        // console.log(this.bearerToken)
       }
     )
   }
 
+  // Get number of accounts
     getNumberOfAccounts(): void {
       this.accountService.getAccounts().subscribe(
         (response: Accounts) => {
@@ -75,6 +93,7 @@ export class OverviewComponent implements OnInit {
       )
     }
 
+    // get number of merchants
     onGetMerchants(): void {
       this.merchantsService.getMerchants(this.body).subscribe(
         (response: Merchants) => {
@@ -84,21 +103,23 @@ export class OverviewComponent implements OnInit {
       )
     }
 
+    // get number of products
     onGetProducts(): void {
       this.productsService.getProducts(this.body).subscribe(
-        (response: any) => {
+        (response: Products) => {
           console.log(response);
-          // this.totalProducts = response;
+          this.totalProducts = response;
         }
       )
     }
 
 
+
+    // get sales value and provision
     getListofSales(): void {
-      this.salesService.getSales().subscribe(
+      this.salesService.getSales(this.bearerToken, this.time).subscribe(
         (response: Sales) => {
           console.log(response);
-          // console.log(this.salesService.bearerToken)
         }
       )
     }
