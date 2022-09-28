@@ -21,8 +21,11 @@ export class OverviewComponent implements OnInit {
   accounts!: Accounts;
   totalMerchants!: Merchants;
   totalProducts!: Products;
+  sales!: Sales;
 
-  today!: string;
+  beginMonth: any = "2021-09-01";
+  endMonth: any = "2022-09-01";
+
 
   private body: any = {
     "type": "QUERY",
@@ -30,8 +33,8 @@ export class OverviewComponent implements OnInit {
   }
 
   private time: any = {
-    "beginMonth": "2022-01-01",
-    "endMonth": "2022-02-02"
+    "beginMonth": "2021-01-01",
+    "endMonth": "2022-09-01"
   }
 
   // My Bearer Token
@@ -53,20 +56,15 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLoginToken()
-    this.getTime()
     this.getNumberOfAccounts()
-    this.onGetMerchants()
-    // this.onGetProducts()
+    this.getNumberOfMerchants()
+    // this.getNumberOfProducts()
     setTimeout(()=> {
       this.getListofSales()
     }, 1000)
-    
   }
 
-  // get present time
-  getTime(): void {
-    this.today = new Date().toISOString().split('T')[0];
-  }
+  
 
 
   // Login to server and get Token
@@ -94,7 +92,7 @@ export class OverviewComponent implements OnInit {
     }
 
     // get number of merchants
-    onGetMerchants(): void {
+    getNumberOfMerchants(): void {
       this.merchantsService.getMerchants(this.body).subscribe(
         (response: Merchants) => {
           // console.log(response);
@@ -104,7 +102,7 @@ export class OverviewComponent implements OnInit {
     }
 
     // get number of products
-    onGetProducts(): void {
+    getNumberOfProducts(): void {
       this.productsService.getProducts(this.body).subscribe(
         (response: Products) => {
           console.log(response);
@@ -120,6 +118,7 @@ export class OverviewComponent implements OnInit {
       this.salesService.getSales(this.bearerToken, this.time).subscribe(
         (response: Sales) => {
           console.log(response);
+          this.sales = response;
         }
       )
     }

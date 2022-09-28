@@ -2,10 +2,10 @@
   <!-- Left Side -->
   <div class="left">
     <div class="container-left">
-      <div class="total">
+      <div *ngIf="sales" class="total">
         <p class="name">Gesamtanzahl der Verkäufe</p>
         <div class="value-div">
-          <p class="val main-val">1.233.345</p>
+          <p  class="val main-val">{{sales.checkoutEventList[0].items[0].quantity}}</p>
           <div class="change">+ 20</div>
         </div>
       </div>
@@ -13,7 +13,7 @@
       <div class="provision">
         <p class="name">Provision</p>
         <div class="value-div">
-          <p class="val">2.544,32€</p>
+          <p *ngIf="sales" class="val">{{sales.monthlyProvisionSalesValue}}€</p>
           <div class="change">+ 72,49€</div>
         </div>
       </div>
@@ -21,12 +21,12 @@
       <div class="date-container">
         <div class="date-left">
           <label for="start">Von:</label>
-          <input  type="month" name="start" value="2021-06" min="2021-06" />
+          <input  type="month" name="start" value="2021-09" min="2021-09" />
         </div>
 
         <div class="date-right">
           <label for="end">Bis:</label>
-          <input ngModel="today" type="month" name="end" value="2022-09" min="2021-06" />
+          <input endMonth="value" type="month" name="end" value="2022-09" min="2021-09" />
         </div>
       </div>
       
