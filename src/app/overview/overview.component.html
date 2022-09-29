@@ -21,12 +21,12 @@
       <div class="date-container">
         <div class="date-left">
           <label for="start">Von:</label>
-          <input  type="month" name="start" value="2021-09" min="2021-09" />
+          <input [(ngModel)]="beginMonth" (change)="getListofSales()" type="month" name="start" value="beginMonth" min="2021-09" />
         </div>
 
         <div class="date-right">
           <label for="end">Bis:</label>
-          <input endMonth="value" type="month" name="end" value="2022-09" min="2021-09" />
+          <input [(ngModel)]="endMonth" (change)="getListofSales()" type="month" name="end" value="endMonth" min="2021-09" />
         </div>
       </div>
       

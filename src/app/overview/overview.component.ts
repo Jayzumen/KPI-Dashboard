@@ -23,8 +23,8 @@ export class OverviewComponent implements OnInit {
   totalProducts!: Products;
   sales!: Sales;
 
-  beginMonth: any = "2021-09-01";
-  endMonth: any = "2022-09-01";
+  beginMonth: any = "2021-09";
+  endMonth: any = "2022-09";
 
 
   private body: any = {
@@ -32,11 +32,8 @@ export class OverviewComponent implements OnInit {
     "query": ""
   }
 
-  private time: any = {
-    "beginMonth": "2021-01-01",
-    "endMonth": "2022-09-01"
-  }
-
+  // get the time
+  time: any = {}
   // My Bearer Token
    bearerToken: any = {};
   // 
@@ -64,7 +61,6 @@ export class OverviewComponent implements OnInit {
     }, 1000)
   }
 
-  
 
 
   // Login to server and get Token
@@ -111,10 +107,23 @@ export class OverviewComponent implements OnInit {
       )
     }
 
+    getTime() {
+      this.time = {
+        "beginMonth": this.beginMonth + "-01",
+        "endMonth": this.endMonth + "-01"
+      }
+    }
+
 
 
     // get sales value and provision
     getListofSales(): void {
+      this.getTime()
+      // this.time = {
+      //   "beginMonth": this.beginMonth + "-01",
+      //   "endMonth": this.endMonth + "-01"
+      // }
+      console.log(this.time)
       this.salesService.getSales(this.bearerToken, this.time).subscribe(
         (response: Sales) => {
           console.log(response);
