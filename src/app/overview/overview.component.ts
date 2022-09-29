@@ -23,19 +23,21 @@ export class OverviewComponent implements OnInit {
   totalProducts!: Products;
   sales!: Sales;
 
-  beginMonth: any = "2021-09";
-  endMonth: any = "2022-09";
+  // start value of begin- and end-Month
+  beginMonth: string = "2021-09";
+  endMonth: string = "2022-09";
 
 
+  // body for request of merchants and products
   private body: any = {
     "type": "QUERY",
     "query": ""
   }
 
-  // get the time
+  // time
   time: any = {}
   // My Bearer Token
-   bearerToken: any = {};
+  bearerToken: any = {};
   // 
   
  
@@ -107,6 +109,7 @@ export class OverviewComponent implements OnInit {
       )
     }
 
+    // get the time
     getTime() {
       this.time = {
         "beginMonth": this.beginMonth + "-01",
@@ -114,16 +117,10 @@ export class OverviewComponent implements OnInit {
       }
     }
 
-
-
     // get sales value and provision
     getListofSales(): void {
       this.getTime()
-      // this.time = {
-      //   "beginMonth": this.beginMonth + "-01",
-      //   "endMonth": this.endMonth + "-01"
-      // }
-      console.log(this.time)
+      // console.log(this.time)
       this.salesService.getSales(this.bearerToken, this.time).subscribe(
         (response: Sales) => {
           console.log(response);
