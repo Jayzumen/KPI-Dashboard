@@ -4,8 +4,8 @@
     <div class="container-left">
       <div *ngIf="sales" class="total">
         <p class="name">Gesamtanzahl der Verkäufe</p>
-        <div class="value-div">
-          <p *ngFor="let item of sales.checkoutEventList"  class="val main-val">{{sales.checkoutEventList[0].items[0].quantity}}</p>
+        <div *ngFor="let list of sales.checkoutEventList" class="value-div">
+          <p *ngFor="let item of list.items"  class="val main-val">{{item?.quantity}}</p>
           <div class="change">+ 20</div>
         </div>
       </div>
@@ -40,9 +40,9 @@
         <p class="name">Händler Anzahl</p>
         <p class="val">{{totalMerchants.merchants.totalElements}}</p>
       </div>
-      <div *ngIf="totalProducts" class="sub-container sub-middle">
+      <div  class="sub-container sub-middle">
         <p class="name">Produkte im Katalog</p>
-        <p class="val">{{totalProducts.products.totalElements}}</p>
+        <p *ngIf="totalProducts" class="val">{{totalProducts.products.totalElements}}</p>
       </div>
       <div class="sub-container">
         <p class="name">Accounts</p>

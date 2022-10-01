@@ -8,7 +8,7 @@ import { Merchants} from './../interface/merchants';
 import { Products} from './../interface/products';
 import { MerchantsService } from './../service/merchants.service';
 import { ProductsService } from './../service/products.service';
-import { Sales } from './../interface/sales';
+import { CheckoutEventList, Sales, Item } from './../interface/sales';
 
 @Component({
   selector: 'app-overview',
@@ -22,6 +22,8 @@ export class OverviewComponent implements OnInit {
   totalMerchants!: Merchants;
   totalProducts!: Products;
   sales!: Sales;
+
+  
 
   // start value of begin- and end-Month
   beginMonth: string = "2021-09";
@@ -38,8 +40,10 @@ export class OverviewComponent implements OnInit {
   time: any = {}
   // My Bearer Token
   bearerToken: any = {};
-  // 
-  
+  //
+
+  totalTransactions?: any = {}
+
  
   constructor(
     private loginService: LoginService,
@@ -125,8 +129,15 @@ export class OverviewComponent implements OnInit {
         (response: Sales) => {
           console.log(response);
           this.sales = response;
+          this.totalTransactions = this.sales.checkoutEventList
         }
       )
+      // for(let list of this.sales.checkoutEventList){
+      //   for (let article of list.items){
+      //     let sum: any =+ article.quantity
+      //     console.log(sum)
+      //   }
+      // }
     }
 
 } 
