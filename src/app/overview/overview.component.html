@@ -4,9 +4,9 @@
     <div class="container-left">
       <div *ngIf="sales" class="total">
         <p class="name">Gesamtanzahl der Verkäufe</p>
-        <div *ngFor="let list of sales.checkoutEventList" class="value-div">
-          <p *ngFor="let item of list.items"  class="val main-val">{{item?.quantity}}</p>
-          <div class="change">+ 20</div>
+        <div *ngIf="totalTransactions" class="value-div">
+          <p class="val main-val">{{totalTransactions}}</p>
+          <!-- <div class="change">+ {{totalTransactions}}</div> -->
         </div>
       </div>
 
@@ -14,14 +14,14 @@
         <p class="name">Provision</p>
         <div *ngIf="sales" class="value-div">
           <p class="val">{{sales.monthlyProvisionSalesValue}}€</p>
-          <div class="change">+ {{sales.monthlyProvisionSalesValue}}€</div>
+          <!-- <div class="change provision-change">+ {{sales.monthlyProvisionSalesValue}}€</div> -->
         </div>
       </div>
 
       <div class="date-container">
         <div class="date-left">
           <label for="start">Von:</label>
-          <input [(ngModel)]="beginMonth" (change)="getListofSales()" type="month" name="start" value="beginMonth" min="2021-09" />
+          <input [(ngModel)]="beginMonth" (change)="getListofSales()" type="month" name="start"  value="beginMonth" min="2021-09" />
         </div>
 
         <div class="date-right">
@@ -36,19 +36,20 @@
   <!-- right side -->
   <div class="right">
     <div class="container-right">
-      <div *ngIf="totalMerchants" class="sub-container">
+      <div class="sub-container">
         <p class="name">Händler Anzahl</p>
-        <p class="val">{{totalMerchants.merchants.totalElements}}</p>
+        <p *ngIf="totalMerchants" class="val">{{totalMerchants.merchants.totalElements}}</p>
       </div>
       <div  class="sub-container sub-middle">
         <p class="name">Produkte im Katalog</p>
-        <p *ngIf="totalProducts" class="val">{{totalProducts.products.totalElements}}</p>
+        <!-- <p *ngIf="totalProducts" class="val">{{totalProducts.products.totalElements}}</p> -->
+        <p class="val">4</p>
       </div>
       <div class="sub-container">
         <p class="name">Accounts</p>
-        <div *ngIf="accounts" class="value-div">
-          <p class="val">{{accounts.total}}</p>
-          <div class="change last-change">+ 1</div>
+        <div class="value-div">
+          <p *ngIf="accounts" class="val">{{accounts.total}}</p>
+          <!-- <div class="change">+ 1</div> -->
         </div>
       </div>
     </div>

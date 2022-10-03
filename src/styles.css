@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --textColor: #009db0;
+  --textColor: #0a797c;
   --white: #fff;
   --lightGreen: rgb(152, 248, 152);
-  --green: rgb(0, 86, 0);
+  --green: rgb(0, 130, 0);
   --bold: "Poppins-Bold";
   --extraBold: "Poppins-ExtraBold";
   --light: "Poppins-Light";

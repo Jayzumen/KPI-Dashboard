@@ -8,7 +8,7 @@ import { Merchants} from './../interface/merchants';
 import { Products} from './../interface/products';
 import { MerchantsService } from './../service/merchants.service';
 import { ProductsService } from './../service/products.service';
-import { CheckoutEventList, Sales, Item } from './../interface/sales';
+import { Sales } from './../interface/sales';
 
 @Component({
   selector: 'app-overview',
@@ -127,17 +127,20 @@ export class OverviewComponent implements OnInit {
       // console.log(this.time)
       this.salesService.getSales(this.bearerToken, this.time).subscribe(
         (response: Sales) => {
-          console.log(response);
+          // console.log(response);
           this.sales = response;
-          this.totalTransactions = this.sales.checkoutEventList
+          
+          let sum = 0;
+          for(let list of this.sales.checkoutEventList){
+            for (let article of list.items){
+              sum = sum + article.quantity
+              this.totalTransactions = sum
+              // console.log(this.totalTransactions)
+            }
+          }
+          
         }
       )
-      // for(let list of this.sales.checkoutEventList){
-      //   for (let article of list.items){
-      //     let sum: any =+ article.quantity
-      //     console.log(sum)
-      //   }
-      // }
     }
 
 } 
